@@ -5,15 +5,15 @@ using System;
 
 namespace HaskellBag
 {
-	public delegate T MappingFunction<T>(T item);
+	public delegate BagRecord MappingFunction(BagRecord item);
 	
-	public delegate bool Predicate<T>(T item);
+	public delegate bool Predicate(BagRecord item);
 	
-	public class Bag<T> : List<T>
+	public class Bag : List<BagRecord>
 	{	
-		public Bag<T> Where(Predicate<T> predicate){
-			Bag<T> newBag = new Bag<T>();
-			foreach(T item in this){
+		public Bag Where(Predicate predicate){
+			Bag newBag = new Bag();
+			foreach(BagRecord item in this){
 				if(predicate(item)){
 					newBag.Add(item);
 				}
@@ -22,9 +22,9 @@ namespace HaskellBag
 			
 		}
 		
-		public Bag<T> Map(MappingFunction<T> function){
-			Bag<T> newBag = new Bag<T>();
-			foreach(T item in this){
+		public Bag Map(MappingFunction function){
+			Bag newBag = new Bag();
+			foreach(BagRecord item in this){
 				newBag.Add(function(item));
 			}
 			return newBag;
@@ -33,6 +33,9 @@ namespace HaskellBag
 		public Predicate Not(Predicate predicate){
 			return x => !predicate;
 		}
+	}
+
+	public BagRecord : Dictionary<String,Object>{
 	}
 	
 	
