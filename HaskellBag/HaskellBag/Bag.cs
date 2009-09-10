@@ -29,6 +29,10 @@ namespace HaskellBag
 			}
 			return newBag;
 		}
+
+		public Predicate Not(Predicate predicate){
+			return x => !predicate;
+		}
 	}
 	
 	
