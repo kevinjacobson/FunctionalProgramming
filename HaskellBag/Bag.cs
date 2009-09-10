@@ -31,11 +31,11 @@ namespace HaskellBag
 		}
 
 		public Predicate Not(Predicate predicate){
-			return x => !predicate;
+			return x => !predicate(x);
 		}
 	}
 
-	public BagRecord : Dictionary<String,Object>{
+	public class BagRecord : Dictionary<String,Object>{
 	}
 	
 	
